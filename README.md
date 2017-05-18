@@ -1,6 +1,6 @@
 # replay-influxdb-kefir
 
-replay [influx](https://node-influx.github.io/) databases as [kefir](streams)
+replay [influx](https://node-influx.github.io/) databases as [kefir streams](https://rpominov.github.io/kefir/)
 
 ## example
 
