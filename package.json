@@ -10,5 +10,9 @@
     "runwatch": "^0.1.3",
     "tape": "^4.5.1"
   },
-  "dependencies": {}
+  "dependencies": {
+    "influx": "^5.0.0-alpha.4",
+    "kefir": "^3.7.1",
+    "lodash.partial": "^4.2.1"
+  }
 }
