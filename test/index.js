@@ -4,8 +4,9 @@ const replay = require('..')
 
 function strictlyOrdered (lst) {
   return lst.slice(1).reduce(function (one, two) {
-    if (one)
-      return two>one
+    if (one && two>=one)
+      return two
+    throw 'err'
     return false
   }, lst[0])
 }
@@ -26,7 +27,8 @@ const influxdb = new Influx.InfluxDB({
 
 test('replays are strictly ordered in time', t => {
 
-  stream = replay(influxdb, 'ticker', '2016-01-01', '2016-01-30')
+  t.plan(3)
+  stream = replay(influxdb, 'ticker', '2016-05-01', '2016-06-30')
     .map(measurement => measurement['time'])
   // produce a buffer of some size
     .bufferWithCount(300)
@@ -34,9 +36,9 @@ test('replays are strictly ordered in time', t => {
   // making sure each value is larger than the one before
     .map(strictlyOrdered)
     .debounce(10)
+    // .log()
     .onValue(v => {
       t.ok(v)
-      t.end()
     })
 })
 
@@ -55,3 +57,4 @@ test('replays produce all values', t => {
       }
     })
 })
+
