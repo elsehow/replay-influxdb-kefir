@@ -11,7 +11,7 @@ const influxdb = new Influx.InfluxDB({
 })
 
 stream = replay(influxdb, 'ticker', '2016-01-01', '2016-01-30')
-  .filter(measurement => measurement['tags']['location'] == 'santa monica')
+  .filter(measurement => measurement['tags']['location'] === 'santa monica')
   .map(measurement => measurement['fields']['depth'])
   .log()
 

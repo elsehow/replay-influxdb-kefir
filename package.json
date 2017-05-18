@@ -2,7 +2,7 @@
   "author": "elsehow",
   "name": "replay-influxdb-kefir",
   "description": "replay influx databases as kefir streams",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "BSD-3-Clause",
   "main": "src/index.js",
   "scripts": {
